@@ -3,7 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
    
-:gitlab_url: https://gitlab.grc.nasa.gov/lte-turbo/pyturbo/-/tree/master/aero
+:gitlab_url: https://github.com/nasa/pyturbo-aero
 
 PyTurbo DOCUMENTATION
 ==================================

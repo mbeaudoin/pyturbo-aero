@@ -90,7 +90,7 @@ html_theme_options = {
 }
 
 
-html_static_path = ['static']
+html_static_path = ['_static']
 rst_context = {'pyturbo-aero': pyturbo_aero}
 
 
