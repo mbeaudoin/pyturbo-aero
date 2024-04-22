@@ -42,7 +42,7 @@ class bezier():
     def get_x_y(self):
         return self.x,self.y
     
-    def get_curve_length(self):
+    def get_curve_length(self) -> float:
         """Gets the curve length
 
         Returns:
@@ -53,7 +53,7 @@ class bezier():
         for i in range(0,len(x)-1):
             d[i] = math.sqrt((x[i+1]-x[i])**2 + (y[i+1]-y[i])**2)
         
-        return sum(d) # Linear approximation of curve length
+        return np.sum(d) # Linear approximation of curve length
 
     def __equal_space__(self,t:np.ndarray,x,y):
         """
@@ -119,8 +119,10 @@ class bezier():
         t = np.linspace(0,1,100)
         [x,y] = self.get_point(t,equal_space)        
         plt.plot(x, y,'-b')
-        plt.plot(self.x, self.y,'or')
-
+        plt.scatter(self.x, self.y, facecolors='none', edgecolors='r')
+        plt.plot(self.x[0], self.y[0], 'or')
+        plt.plot(self.x[-1], self.y[-1], 'or')
+        
         plt.xlabel("x-label")
         plt.ylabel("y-label")
         plt.axis('scaled')
