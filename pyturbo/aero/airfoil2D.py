@@ -468,13 +468,13 @@ class airfoil2D():
         self.CCW = 0
         # Flip the Camber
         for i in range(0,len(self.cambBezierX)):
-            dx =  xc -self.cambBezierX(i)
+            dx =  xc -self.cambBezierX[i]
             self.cambBezierX[i] = xc+dx
         
         self.camberBezier = bezier(self.cambBezierX,self.cambBezierY)
         
         for i in range(0,len(self.psBezierX)):
-            dx =  xc -self.psBezierX(i)
+            dx =  xc -self.psBezierX[i]
             self.psBezierX[i] = xc+dx
         
         self.psBezier = bezier(self.psBezierX,self.psBezierY)
@@ -764,8 +764,8 @@ class airfoil2D():
             linewidth=2)
         plt.plot(xSS,ySS, color='red', linestyle='solid', 
             linewidth=2)
-        plt.plot(self.psBezier.x,self.psBezier.y, color='blue', marker='o',markerfacecolor="None",markersize=8)
-        plt.plot(self.ssBezier.x,self.ssBezier.y, color='red', marker='o',markerfacecolor="None",markersize=8)
+        plt.plot(self.psBezier.x,self.psBezier.y, color='blue', marker='o',markerfacecolor="None",markersize=8,alpha=0.5)
+        plt.plot(self.ssBezier.x,self.ssBezier.y, color='red', marker='o',markerfacecolor="None",markersize=8,alpha=0.5)
         # Plot the line from camber to the control points
         # suction side
         for indx in range(0,len(self.ssBezierX)):
@@ -773,14 +773,14 @@ class airfoil2D():
             y = self.ssBezierY[indx]
             d = dist(x,y,xcamber,ycamber)
             min_indx = np.where(d == np.amin(d))[0][0]
-            plt.plot([x,xcamber[min_indx]],[y,ycamber[min_indx]], color='black', linestyle='dashed')
+            plt.plot([x,xcamber[min_indx]],[y,ycamber[min_indx]], color='black', linestyle='dashed',alpha=0.5)
         # pressure side
         for indx in range(0,len(self.psBezierX)):
             x = self.psBezierX[indx]
             y = self.psBezierY[indx]
             d = dist(x,y,xcamber,ycamber)
             min_indx = np.where(d == np.amin(d))[0][0]
-            plt.plot([x,xcamber[min_indx]],[y,ycamber[min_indx]], color='black', linestyle='dashed')
+            plt.plot([x,xcamber[min_indx]],[y,ycamber[min_indx]], color='black', linestyle='dashed',alpha=0.5)
         # Plot the Trailing Edge
         t = np.linspace(0,1,20)
         [x, y] = self.TE_ps_arc.get_point(t)
